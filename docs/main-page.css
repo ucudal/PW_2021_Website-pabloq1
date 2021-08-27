@@ -1,15 +1,29 @@
-* {
-    margin: 0;
+.container {
+    background-color: #EAEDF0;
+    margin: 0 auto;
 }
 
 .title {
-    width: 80%;
-    float: right;
+    text-align: center;
+    border-radius: 20px;
+    margin: 0 auto;
+    width: 90%;
     height: 100px;
     background-color: #B2D6FF;
-  }
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.page {
+    overflow: hidden;
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
   
 .sidebar {
+    margin-right: 5px;
+    border-radius: 20px;
     float: left;
     width: 20%;
     height: 600px;
@@ -17,12 +31,18 @@
 }
 
 .content {
-    clear: right;
+    width: 79%;
+    border-radius: 20px;
+    float: right;
     height: 500px;
     background-color: #F5CF8E; 
 }
 
 .footer {
-    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    clear: both;
+    height: 100px;
     background-color: #D6E9FE; 
 }
