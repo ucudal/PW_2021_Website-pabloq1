@@ -21,7 +21,7 @@
 }
 
 .site-title {
-    @apply text-lg md:text-2xl font-medium text-gray-800 text-center
+    @apply text-lg md:text-2xl font-medium text-gray-800 text-center inline-flex items-center justify-center hover:text-gray-500
 }
 
 .site-container {
