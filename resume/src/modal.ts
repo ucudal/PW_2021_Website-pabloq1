@@ -1,29 +1,39 @@
-const modal = document.getElementById("my-modal");
-const modalTitle = document.getElementById("job-title");
-const modalParagraph = document.getElementById("job-paragraph");
-const okButton = document.getElementById("ok-btn");
+const modal: HTMLElement = document.getElementById("my-modal") as HTMLElement;
+const modalTitle: HTMLElement = document.getElementById("site-title") as HTMLElement;
+const modalParagraph: HTMLElement = document.getElementById("site-paragraph") as HTMLElement;
+const okButton: HTMLElement = document.getElementById("ok-btn") as HTMLElement;
 
-const showModal = (button) => {
+enum Work {
+    MercadoLibre = "meli",
+    OrangeLoops = "orange",
+    ThinkUp = "thinkup",
+    KPMG = "kpmg"
+}
+
+enum Titles {
+    MercadoLibre = "Mercado Libre",
+    OrangeLoops = "OrangeLoops",
+    ThinkUp = "ThinkUp Software",
+    KPMG = "KPMG Uruguay"
+}
+
+const showModal = (button: string) => {
     switch (button) {
-        case "meli":
-            modalTitle.innerHTML = "Mercado Libre"
+        case Work.MercadoLibre:
+            modalTitle.innerHTML = Titles.MercadoLibre
             modalParagraph.innerHTML = `
-            Mostly working with iOS mobile apps using Swift and Objective-C refactoring. <br>
-            Solid understanding of object-oriented programming. <br>
-            Knowledge of memory management and multi-threading. <br>
-            Good sense of UI design and user-oriented focus, with an understanding of Apple’s design principles and interface guidelines. <br>
-            Experience with code versioning tools (Git).<br>
+            UNDER CONSTRUCTION
             `
             break;
-        case "orange":
-            modalTitle.innerHTML = "OrangeLoops"
+        case Work.OrangeLoops:
+            modalTitle.innerHTML = Titles.OrangeLoops
             modalParagraph.innerHTML = `
             Worked with custom styling in white-label Objective-C apps and Unit and UI testing using Xcode. <br>
             Usage of versioning tools.
             `
             break;
-        case "thinkup":
-            modalTitle.innerHTML = "ThinkUp Software"
+        case Work.ThinkUp:
+            modalTitle.innerHTML = Titles.ThinkUp
             modalParagraph.innerHTML = `
             Mostly working with iOS mobile apps using Swift and Objective-C refactoring. <br>
             Solid understanding of object-oriented programming. <br>
@@ -32,8 +42,8 @@ const showModal = (button) => {
             Experience with code versioning tools (Git).<br>
             `
             break;
-        case "kpmg":
-            modalTitle.innerHTML = "KPMG"
+        case Work.KPMG:
+            modalTitle.innerHTML = Titles.KPMG
             modalParagraph.innerHTML = `
             Worked with RPA automation tools such as Automation Anywhere, UI Path and WorkFusion development tools, for projects meant for Uruguayan technological and accounting companies. <br> 
             Functional Testing and helped in the design of Javascript websites. <br>
@@ -52,7 +62,7 @@ const showModal = (button) => {
 okButton.onclick = () => modal.style.display = "none";
 
 // register clicks outside modal
-window.onclick = (event) => {
+window.onclick = (event: Event) => {
     if (event.target == modal) {
         modal.style.display = "none";
     }
