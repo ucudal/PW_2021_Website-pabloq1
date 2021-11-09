@@ -3,3 +3,47 @@
 @tailwind utilities;
 
 /* styles */
+
+.resume {
+    @apply  mx-5 my-5 md:mx-auto max-w-screen-lg md:flex bg-gray-100 rounded-3xl md:rounded-lg
+}
+
+.sidebar {
+    @apply bg-gray-100 md:w-1/3 p-2 pl-6 pt-10 relative rounded-3xl md:rounded-lg
+}
+
+.main-content {
+    @apply md:w-2/3 pl-6 py-5 px-6 w-full
+}
+
+.site-description-container {
+    @apply mt-1 flex flex-col items-center md:flex-none md:items-start
+}
+
+.site-title {
+    @apply text-lg md:text-2xl font-medium text-gray-800 text-center inline-flex items-center justify-center hover:text-gray-500
+}
+
+.site-container {
+    @apply mb-4 flex flex-col justify-center md:flex-none md:items-start
+}
+
+.site-place {
+    @apply text-sm md:text-base text-gray-800
+}
+
+.site-dates {
+    @apply text-xs md:text-sm text-gray-600
+} 
+
+.info-section {
+    @apply w-full lg:max-w-full rounded bg-white shadow py-5 my-5
+} 
+
+.info-section-title {
+    @apply mb-4 text-2xl md:text-4xl text-gray-700 font-bold flex justify-center md:flex-none md:justify-start
+}
+
+.info-section-separator {
+    @apply mx-4
+}
