@@ -37,7 +37,7 @@
 } 
 
 .info-section {
-    @apply w-full lg:max-w-full rounded bg-white shadow py-5 my-5
+    @apply w-full lg:max-w-full rounded bg-white shadow py-5 mb-5
 } 
 
 .info-section-title {
@@ -46,4 +46,20 @@
 
 .info-section-separator {
     @apply mx-4
+}
+
+.modal {
+    @apply fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full
+}
+
+.modal-content {
+    @apply md:w-747 md:mx-auto relative top-20 mx-5 p-5 border shadow-lg rounded-md bg-white
+}
+
+.contact-modal-title {
+    @apply block text-gray-700 text-sm font-bold mb-2
+}
+
+.contact-modal-input {
+    @apply bg-gray-200 appearance-none border-2 border-gray-200 rounded w-2/3 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500
 }

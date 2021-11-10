@@ -1,40 +1,49 @@
-const modal: HTMLElement = document.getElementById("my-modal") as HTMLElement;
-const modalTitle: HTMLElement = document.getElementById("site-title") as HTMLElement;
-const modalParagraph: HTMLElement = document.getElementById("site-paragraph") as HTMLElement;
-const okButton: HTMLElement = document.getElementById("ok-btn") as HTMLElement;
+const jobModal: HTMLElement = document.getElementById("job-modal");
+const jobModalTitle: HTMLElement = document.getElementById("site-title");
+const jobModalParagraph: HTMLElement = document.getElementById("site-paragraph");
+
+const contactModal: HTMLElement = document.getElementById("contact-modal");
+
+const hireMeButton: HTMLElement = document.getElementById("hire-me-btn");
+const okButton: HTMLElement = document.getElementById("ok-btn");
 
 enum Work {
     MercadoLibre = "meli",
     OrangeLoops = "orange",
     ThinkUp = "thinkup",
     KPMG = "kpmg"
-}
+};
 
 enum Titles {
     MercadoLibre = "Mercado Libre",
     OrangeLoops = "OrangeLoops",
     ThinkUp = "ThinkUp Software",
     KPMG = "KPMG Uruguay"
-}
+};
 
-const showModal = (button: string) => {
+enum Modals {
+    Contact = "contact-modal",
+    Job = "job-modal"
+};
+
+const showJobModal = (button: string) => {
     switch (button) {
         case Work.MercadoLibre:
-            modalTitle.innerHTML = Titles.MercadoLibre
-            modalParagraph.innerHTML = `
+            jobModalTitle.innerHTML = Titles.MercadoLibre
+            jobModalParagraph.innerHTML = `
             UNDER CONSTRUCTION
             `
             break;
         case Work.OrangeLoops:
-            modalTitle.innerHTML = Titles.OrangeLoops
-            modalParagraph.innerHTML = `
+            jobModalTitle.innerHTML = Titles.OrangeLoops
+            jobModalParagraph.innerHTML = `
             Worked with custom styling in white-label Objective-C apps and Unit and UI testing using Xcode. <br>
             Usage of versioning tools.
             `
             break;
         case Work.ThinkUp:
-            modalTitle.innerHTML = Titles.ThinkUp
-            modalParagraph.innerHTML = `
+            jobModalTitle.innerHTML = Titles.ThinkUp
+            jobModalParagraph.innerHTML = `
             Mostly working with iOS mobile apps using Swift and Objective-C refactoring. <br>
             Solid understanding of object-oriented programming. <br>
             Knowledge of memory management and multi-threading. <br>
@@ -43,8 +52,8 @@ const showModal = (button: string) => {
             `
             break;
         case Work.KPMG:
-            modalTitle.innerHTML = Titles.KPMG
-            modalParagraph.innerHTML = `
+            jobModalTitle.innerHTML = Titles.KPMG
+            jobModalParagraph.innerHTML = `
             Worked with RPA automation tools such as Automation Anywhere, UI Path and WorkFusion development tools, for projects meant for Uruguayan technological and accounting companies. <br> 
             Functional Testing and helped in the design of Javascript websites. <br>
             Data Analytics using IDEA Software and Python developed scripts.
@@ -54,16 +63,36 @@ const showModal = (button: string) => {
             break;
         
     }
-    // display modal
-    modal.style.display = "block"
-}
+    jobModal.style.display = "block"
+};
 
-// close modal
-okButton.onclick = () => modal.style.display = "none";
-
-// register clicks outside modal
-window.onclick = (event: Event) => {
-    if (event.target == modal) {
-        modal.style.display = "none";
+const closeModal = (id: string) => {
+    switch (id) {
+        case Modals.Contact:
+            contactModal.style.display = "none"
+            sentMessageAlert();
+            break;
+        case Modals.Job:
+            jobModal.style.display = "none"
+            break;
+        default:
+            break;
     }
-}
+};
+
+const showContactModal = () => contactModal.style.display = "block";
+
+window.onclick = (event: Event) => {
+    switch (event.target) {
+        case jobModal:
+            jobModal.style.display = "none";
+            break;
+        case contactModal:
+            contactModal.style.display = "none";
+            break;
+        default:
+            break;
+    }
+};
+
+const sentMessageAlert = () => alert('Thank you!');
