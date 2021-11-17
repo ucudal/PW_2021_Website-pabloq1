@@ -20,6 +20,23 @@
     @apply mt-1 flex flex-col items-center md:flex-none md:items-start
 }
 
+
+.site-modal-container-white {
+    @apply bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6
+}
+
+.site-modal-container-gray {
+    @apply bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6
+}
+
+.site-modal-title {
+    @apply text-sm font-medium text-gray-500
+}
+
+.site-modal-text {
+    @apply mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2
+}
+
 .site-title {
     @apply text-lg md:text-2xl font-medium text-gray-800 text-center inline-flex items-center justify-center hover:text-gray-500
 }

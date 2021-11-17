@@ -1,52 +1,40 @@
 var jobModal = document.getElementById("job-modal");
 var jobModalTitle = document.getElementById("site-title");
-var jobModalParagraph = document.getElementById("site-paragraph");
+var jobModalPosition = document.getElementById("site-position");
+var jobModalDescription = document.getElementById("site-description");
+var jobModalStartDate = document.getElementById("site-start-date");
+var jobModalEndDate = document.getElementById("site-end-date");
+var jobModalEndDateContainer = document.getElementById("end-date-container");
 var contactModal = document.getElementById("contact-modal");
 var hireMeButton = document.getElementById("hire-me-btn");
 var okButton = document.getElementById("ok-btn");
-var Work;
-(function (Work) {
-    Work["MercadoLibre"] = "meli";
-    Work["OrangeLoops"] = "orange";
-    Work["ThinkUp"] = "thinkup";
-    Work["KPMG"] = "kpmg";
-})(Work || (Work = {}));
-;
-var Titles;
-(function (Titles) {
-    Titles["MercadoLibre"] = "Mercado Libre";
-    Titles["OrangeLoops"] = "OrangeLoops";
-    Titles["ThinkUp"] = "ThinkUp Software";
-    Titles["KPMG"] = "KPMG Uruguay";
-})(Titles || (Titles = {}));
-;
 var Modals;
 (function (Modals) {
     Modals["Contact"] = "contact-modal";
     Modals["Job"] = "job-modal";
 })(Modals || (Modals = {}));
-;
 var showJobModal = function (button) {
-    switch (button) {
-        case Work.MercadoLibre:
-            jobModalTitle.innerHTML = Titles.MercadoLibre;
-            jobModalParagraph.innerHTML = "\n            UNDER CONSTRUCTION\n            ";
-            break;
-        case Work.OrangeLoops:
-            jobModalTitle.innerHTML = Titles.OrangeLoops;
-            jobModalParagraph.innerHTML = "\n            Worked with custom styling in white-label Objective-C apps and Unit and UI testing using Xcode. <br>\n            Usage of versioning tools.\n            ";
-            break;
-        case Work.ThinkUp:
-            jobModalTitle.innerHTML = Titles.ThinkUp;
-            jobModalParagraph.innerHTML = "\n            Mostly working with iOS mobile apps using Swift and Objective-C refactoring. <br>\n            Solid understanding of object-oriented programming. <br>\n            Knowledge of memory management and multi-threading. <br>\n            Good sense of UI design and user-oriented focus, with an understanding of Apple\u2019s design principles and interface guidelines. <br>\n            Experience with code versioning tools (Git).<br>\n            ";
-            break;
-        case Work.KPMG:
-            jobModalTitle.innerHTML = Titles.KPMG;
-            jobModalParagraph.innerHTML = "\n            Worked with RPA automation tools such as Automation Anywhere, UI Path and WorkFusion development tools, for projects meant for Uruguayan technological and accounting companies. <br> \n            Functional Testing and helped in the design of Javascript websites. <br>\n            Data Analytics using IDEA Software and Python developed scripts.\n            ";
-            break;
-        default:
-            break;
-    }
+    fetch("https://PW2021-APINode-pabloq1.pabloq1.repl.co/" + button)
+        .then(function (response) {
+        return response.json();
+    })
+        .then(function (data) {
+        if (data.endDate == "") {
+            jobModalEndDateContainer.style.display = "none";
+        }
+        else {
+            jobModalEndDateContainer.style.display = "grid";
+            jobModalEndDate.innerHTML = "" + data.endDate;
+        }
+        jobModalTitle.innerHTML = data.title;
+        jobModalPosition.innerHTML = data.position;
+        jobModalDescription.innerHTML = "" + data.description;
+        jobModalStartDate.innerHTML = "" + data.startDate;
+    })
+        .catch(function (err) {
+        jobModalTitle.innerHTML = "Error";
+        jobModalDescription.innerHTML = "Cannot fetch job information in this moment. Try again.";
+    });
     jobModal.style.display = "block";
 };
 var closeModal = function (id) {
@@ -62,7 +50,7 @@ var closeModal = function (id) {
             break;
     }
 };
-var showContactModal = function () { return contactModal.style.display = "block"; };
+var showContactModal = function () { return (contactModal.style.display = "block"); };
 window.onclick = function (event) {
     switch (event.target) {
         case jobModal:
@@ -75,4 +63,4 @@ window.onclick = function (event) {
             break;
     }
 };
-var sentMessageAlert = function () { return alert('Thank you!'); };
+var sentMessageAlert = function () { return alert("Thank you!"); };
