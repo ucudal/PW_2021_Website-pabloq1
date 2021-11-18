@@ -276,26 +276,26 @@
     <div id="contact-modal" class="modal">
         <div class="modal-content">
             <div class="mt-3 text-center">
-                <form onsubmit="closeModal('contact-modal')">
+                <form id=form>
                     <div class="mb-4">
                         <label class="contact-modal-title" for="username">
                             Name
                         </label>
-                        <input class="contact-modal-input py-2" id="inline-full-name" type="text"
+                        <input class="contact-modal-input py-2" id="contact-full-name" type="text"
                             placeholder="Your name" required />
                     </div>
                     <div class="mb-6">
                         <label class="contact-modal-title" for="email">
                             Email
                         </label>
-                        <input class="contact-modal-input py-2" id="inline-email" type="email"
+                        <input class="contact-modal-input py-2" id="contact-email" type="email"
                             placeholder="jane@doe.com" required />
                     </div>
                     <div class="mb-6">
                         <label class="contact-modal-title" for="message">
                             Message
                         </label>
-                        <textarea class="contact-modal-input resize-none pb-10 pt-2" id="content"
+                        <textarea class="contact-modal-input resize-none pb-10 pt-2" id="contact-message"
                             placeholder="jane@doe.com" required></textarea>
                     </div>
                     <div class="items-center px-4 py-3">
