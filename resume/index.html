@@ -198,7 +198,7 @@
                                 </div>
                                 <div>
                                     <i class="bx bx-calendar text-sm" style="color: #666"></i>
-                                    <small class="site-dates">Mar 2017 - Present </small>
+                                    <small class="site-dates">Mar 2017 - 2022 </small>
                                 </div>
                             </div>
                     </li>
@@ -220,15 +220,120 @@
             </div>
         </div>
 
-        <!-- skills -->
-        <!-- <div id="skills" class="info-section">
-            <div class="info-section-separator">
-                <h1 class="info-section-title">Skills</h1>
-                <ul>
 
-                </ul>
+
+        <!-- skills -->
+        <div id="coding-skills" class="info-section">
+            <div class="info-section-separator">
+                <h1 class="info-section-title">Coding Skills</h1>
+                <div class="relative pt-1">
+                    <div class="py-2">
+                        <div class="flex mb-2 items-center justify-between">
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-gray-200">
+                                Swift
+                            </span>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4  text-xs flex rounded bg-gray-200">
+                            <div style="width:85%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-400">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="py-2">
+                        <div class="flex mb-2 items-center justify-between">
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-gray-200">
+                                Objective-C
+                            </span>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width:60%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-400">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-2">
+                        <div class="flex mb-2 items-center justify-between">
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-gray-200">
+                                Git
+                            </span>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width:70%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-400">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-2">
+                        <div class="flex mb-2 items-center justify-between">
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-gray-200">
+                                JavaScript
+                            </span>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width:45%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-400">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-2">
+                        <div class="flex mb-2 items-center justify-between">
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-gray-200">
+                                SQL
+                            </span>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width:50%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-400">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div> -->
+        </div>
+
+
+        <div id="general-skills" class="info-section">
+            <div class="info-section-separator">
+                <h1 class="info-section-title">General Skills</h1>
+                <div class="relative pt-1">
+                    <div class="py-2">
+                        <div class="flex mb-2 items-center justify-between">
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-gray-200">
+                                English
+                            </span>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4  text-xs flex rounded bg-gray-200">
+                            <div style="width:95%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-400">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="py-2">
+                        <div class="flex mb-2 items-center justify-between">
+                            <span
+                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-gray-200">
+                                French
+                            </span>
+                        </div>
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width:60%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-400">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <div id="job-modal" class="modal">
@@ -279,10 +384,10 @@
                 <form id=form>
                     <div class="mb-4">
                         <label class="contact-modal-title" for="username">
-                            Name
+                            Name / Company
                         </label>
                         <input class="contact-modal-input py-2" id="contact-full-name" type="text"
-                            placeholder="Your name" required />
+                            placeholder="Jane Doe" />
                     </div>
                     <div class="mb-6">
                         <label class="contact-modal-title" for="email">
@@ -296,8 +401,12 @@
                             Message
                         </label>
                         <textarea class="contact-modal-input resize-none pb-10 pt-2" id="contact-message"
-                            placeholder="jane@doe.com" required></textarea>
+                            placeholder="Nice to meet you!" required></textarea>
                     </div>
+                    <div class="mb-6">
+                        <label id="contact-name-error-label" class="hidden text-red-500 text-xs italic"></label>
+                    </div>
+
                     <div class="items-center px-4 py-3">
                         <button id="ok-btn" type="submit" class="ok-button">
                             Send

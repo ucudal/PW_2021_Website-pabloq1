@@ -21,6 +21,9 @@ const contactEmail: HTMLInputElement = <HTMLInputElement>(
 const contactMessage: HTMLInputElement = <HTMLInputElement>(
     document.getElementById("contact-message")
 );
+const missingContactNameMessage: HTMLElement = <HTMLElement>(
+    document.getElementById("contact-name-error-label")
+);
 
 // buttons
 const hireMeButton: HTMLElement = document.getElementById("hire-me-btn");
@@ -37,7 +40,7 @@ const showJobModal = (button: string) => {
             return response.json();
         })
         .then((data) => {
-            if (data.endDate == "") {
+            if (data.endDate === undefined) {
                 jobModalEndDateContainer.style.display = "none";
             } else {
                 jobModalEndDateContainer.style.display = "grid";
@@ -57,46 +60,59 @@ const showJobModal = (button: string) => {
     jobModal.style.display = "block";
 };
 
-const form = document.getElementById('form');
+const form = document.getElementById("form");
 
 const handleSubmit = (event) => {
     event.preventDefault();
 
     let data = {
-        name: contactName.value,
         email: contactEmail.value,
+        message: contactMessage.value,
     };
+
+    if (contactName.value !== "") {
+        data["name"] = contactName.value
+    }
 
     fetch("https://PW2021-APINode-pabloq1.pabloq1.repl.co", {
         method: "POST",
-        credentials: 'include',
+        credentials: "include",
         headers: {
-            "Content-Type": "text/plain",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({ data }),
     })
-        .then((res) => res.json())
-        .then((data) => {
-            closeModal(Modals.Contact)
-            console.log(data);
+        .then((res) => {
+            if (res.status === 400) {
+                res.json().then((data) => {
+                    missingContactNameMessage.style.display = "block";
+                    missingContactNameMessage.innerHTML = data.message
+                });
+            } else if (res.status === 200) {
+                missingContactNameMessage.style.display = "none"
+                res.json().then((data) => {
+                    alert(data.message)
+                    closeModal(Modals.Contact)
+                });
+            }
         })
         .catch((error) => {
             alert(`${error}`);
             console.log(error);
         });
-}
+};
 
-form.addEventListener('submit', handleSubmit)
+form.addEventListener("submit", handleSubmit);
 
 const showContactModal = () => (contactModal.style.display = "block");
 
 window.onclick = (event: Event) => {
     switch (event.target) {
         case jobModal:
-            closeModal(Modals.Job)
+            closeModal(Modals.Job);
             break;
         case contactModal:
-            closeModal(Modals.Contact)
+            closeModal(Modals.Contact);
             break;
         default:
             break;

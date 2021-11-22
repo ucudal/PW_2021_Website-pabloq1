@@ -9,6 +9,7 @@ var contactModal = document.getElementById("contact-modal");
 var contactName = (document.getElementById("contact-full-name"));
 var contactEmail = (document.getElementById("contact-email"));
 var contactMessage = (document.getElementById("contact-message"));
+var missingContactNameMessage = (document.getElementById("contact-name-error-label"));
 var hireMeButton = document.getElementById("hire-me-btn");
 var okButton = document.getElementById("ok-btn");
 var Modals;
@@ -22,7 +23,7 @@ var showJobModal = function (button) {
         return response.json();
     })
         .then(function (data) {
-        if (data.endDate == "") {
+        if (data.endDate === undefined) {
             jobModalEndDateContainer.style.display = "none";
         }
         else {
@@ -40,32 +41,45 @@ var showJobModal = function (button) {
     });
     jobModal.style.display = "block";
 };
-var form = document.getElementById('form');
+var form = document.getElementById("form");
 var handleSubmit = function (event) {
     event.preventDefault();
     var data = {
-        name: contactName.value,
         email: contactEmail.value,
+        message: contactMessage.value,
     };
+    if (contactName.value !== "") {
+        data["name"] = contactName.value;
+    }
     fetch("https://PW2021-APINode-pabloq1.pabloq1.repl.co", {
         method: "POST",
-        credentials: 'include',
+        credentials: "include",
         headers: {
-            "Content-Type": "text/plain",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({ data: data }),
     })
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-        closeModal(Modals.Contact);
-        console.log(data);
+        .then(function (res) {
+        if (res.status === 400) {
+            res.json().then(function (data) {
+                missingContactNameMessage.style.display = "block";
+                missingContactNameMessage.innerHTML = data.message;
+            });
+        }
+        else if (res.status === 200) {
+            missingContactNameMessage.style.display = "none";
+            res.json().then(function (data) {
+                alert(data.message);
+                closeModal(Modals.Contact);
+            });
+        }
     })
         .catch(function (error) {
         alert("" + error);
         console.log(error);
     });
 };
-form.addEventListener('submit', handleSubmit);
+form.addEventListener("submit", handleSubmit);
 var showContactModal = function () { return (contactModal.style.display = "block"); };
 window.onclick = function (event) {
     switch (event.target) {
