@@ -10,9 +10,10 @@
 
 .ok-button:hover {
     background-color: #34D399;
-    border:transparent;
+    border: transparent;
     color: white;
 }
 
-/* bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded */
-/* px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded shadow */
+.simple-divider {
+    border: 2px solid #D1D5DB;
+}

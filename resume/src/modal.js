@@ -6,6 +6,7 @@ var jobModalStartDate = document.getElementById("site-start-date");
 var jobModalEndDate = document.getElementById("site-end-date");
 var jobModalEndDateContainer = document.getElementById("end-date-container");
 var contactModal = document.getElementById("contact-modal");
+var contactForm = document.getElementById("contact-form");
 var contactName = (document.getElementById("contact-full-name"));
 var contactEmail = (document.getElementById("contact-email"));
 var contactMessage = (document.getElementById("contact-message"));
@@ -41,7 +42,6 @@ var showJobModal = function (button) {
     });
     jobModal.style.display = "block";
 };
-var form = document.getElementById("form");
 var handleSubmit = function (event) {
     event.preventDefault();
     var data = {
@@ -79,7 +79,7 @@ var handleSubmit = function (event) {
         console.log(error);
     });
 };
-form.addEventListener("submit", handleSubmit);
+contactForm.addEventListener("submit", handleSubmit);
 var showContactModal = function () { return (contactModal.style.display = "block"); };
 window.onclick = function (event) {
     switch (event.target) {

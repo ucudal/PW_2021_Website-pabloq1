@@ -12,6 +12,7 @@ const jobModalEndDateContainer: HTMLElement =
 
 // contact modal
 const contactModal: HTMLElement = document.getElementById("contact-modal");
+const contactForm: HTMLElement = document.getElementById("contact-form");
 const contactName: HTMLInputElement = <HTMLInputElement>(
     document.getElementById("contact-full-name")
 );
@@ -21,8 +22,7 @@ const contactEmail: HTMLInputElement = <HTMLInputElement>(
 const contactMessage: HTMLInputElement = <HTMLInputElement>(
     document.getElementById("contact-message")
 );
-const missingContactNameMessage: HTMLElement = <HTMLElement>(
-    document.getElementById("contact-name-error-label")
+const missingContactNameMessage: HTMLElement = (document.getElementById("contact-name-error-label")
 );
 
 // buttons
@@ -59,8 +59,6 @@ const showJobModal = (button: string) => {
 
     jobModal.style.display = "block";
 };
-
-const form = document.getElementById("form");
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -102,7 +100,7 @@ const handleSubmit = (event) => {
         });
 };
 
-form.addEventListener("submit", handleSubmit);
+contactForm.addEventListener("submit", handleSubmit);
 
 const showContactModal = () => (contactModal.style.display = "block");
 
